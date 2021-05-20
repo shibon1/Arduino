@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\GRSI.LABINF1-PC07\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\GRSI.LABINF1-PC07\\.nuget\\packages"
+    ]
+  }
+}
