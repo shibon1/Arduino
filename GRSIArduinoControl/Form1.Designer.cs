@@ -80,7 +80,7 @@ namespace GRSIArduinoControl
             // 
             // tbLEDRed
             // 
-            this.tbLEDRed.BackColor = System.Drawing.Color.Red;
+            this.tbLEDRed.BackColor = System.Drawing.SystemColors.Window;
             this.tbLEDRed.ForeColor = System.Drawing.SystemColors.Window;
             this.tbLEDRed.Location = new System.Drawing.Point(61, 235);
             this.tbLEDRed.Name = "tbLEDRed";
@@ -178,7 +178,7 @@ namespace GRSIArduinoControl
             // 
             // tbLEDGreen
             // 
-            this.tbLEDGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tbLEDGreen.BackColor = System.Drawing.SystemColors.Window;
             this.tbLEDGreen.ForeColor = System.Drawing.SystemColors.Window;
             this.tbLEDGreen.Location = new System.Drawing.Point(61, 343);
             this.tbLEDGreen.Name = "tbLEDGreen";
@@ -198,7 +198,7 @@ namespace GRSIArduinoControl
             // 
             // tbLEDYellow
             // 
-            this.tbLEDYellow.BackColor = System.Drawing.Color.Yellow;
+            this.tbLEDYellow.BackColor = System.Drawing.SystemColors.Window;
             this.tbLEDYellow.ForeColor = System.Drawing.SystemColors.Window;
             this.tbLEDYellow.Location = new System.Drawing.Point(61, 291);
             this.tbLEDYellow.Name = "tbLEDYellow";

@@ -11,6 +11,8 @@ namespace GRSIArduinoControl
         private string selectedCOM;
         private SerialPort port = new SerialPort();
         private int inData;
+        private String flagLED;
+
 
         public Form1()
         {
@@ -119,6 +121,7 @@ namespace GRSIArduinoControl
             btnTerminar.Enabled = true;
             btnIniciar.Enabled = false;
             port.Write("I");
+
         }
 
         public void port_SerialDataReceivedEvent (object sender, SerialDataReceivedEventArgs e)
@@ -143,40 +146,46 @@ namespace GRSIArduinoControl
         public void displayData(object sender, EventArgs e)
         {
             tbLEDRed.Clear();
+
             if(inData == 0)
             {
-                tbLEDRed.BackColor = Color.Red;
-                tbLEDRed.Text = "DESLIGADO";
+                switch(flagLED)
+                {
+                    case "red" :
+                        tbLEDRed.BackColor = Color.Red;
+                        tbLEDRed.Text = "DESLIGADO";
+                        break;
+                    case "yellow":
+                        tbLEDYellow.BackColor = Color.Red;
+                        tbLEDYellow.Text = "DESLIGADO";
+                        break;
+                    case "green":
+                        tbLEDGreen.BackColor = Color.Red;
+                        tbLEDGreen.Text = "LIGADO";
+                        break;
+                }
+
             }
             if(inData == 1)
             {
-                tbLEDRed.BackColor = Color.Green;
-                tbLEDRed.Text = "LIGADO";
-            }
-            tbLEDGreen.Clear();
-            if (inData == 0)
-            {
-                tbLEDGreen.BackColor = Color.Green;
-                tbLEDGreen.Text = "DESLIGADO";
-            }
-            if (inData == 1)
-            {
-                tbLEDGreen.BackColor = Color.Yellow;
-                tbLEDGreen.Text = "LIGADO";
-            }
-            tbLEDYellow.Clear();
-            if (inData == 0)
-            {
-                tbLEDYellow.BackColor = Color.Yellow;
-                tbLEDYellow.Text = "DESLIGADO";
-            }
-            if (inData == 1)
-            {
-                tbLEDYellow.BackColor = Color.Yellow;
-                tbLEDYellow.Text = "LIGADO";
-            }
+                switch (flagLED)
+                {
+                    case "red":
+                        tbLEDRed.BackColor = Color.Green;
+                        tbLEDRed.Text = "LIGADO";
+                        break;
+                    case "yellow":
+                        tbLEDYellow.BackColor = Color.Green;
+                        tbLEDYellow.Text = "LIGADO";
+                        break;
+                    case "green":
+                        tbLEDGreen.BackColor = Color.Red;
+                        tbLEDGreen.Text = "LIGADO";
+                        break;
+                }
 
-
+            }
+                    
         }
 
         private void btnTerminar_Click(object sender, EventArgs e)
@@ -223,11 +232,13 @@ namespace GRSIArduinoControl
 
         private void btnONRed_Click(object sender, EventArgs e)
         {
+            flagLED = "red";
             port.Write("L");
         }
 
         private void btnOFFRed_Click(object sender, EventArgs e)
         {
+            flagLED = "red";
             port.Write("D");
         }
 
@@ -248,21 +259,25 @@ namespace GRSIArduinoControl
 
         private void btnONVerde_Click(object sender, EventArgs e)
         {
-            port.Write("G");
+            flagLED = "green"
+;           port.Write("G");
         }
 
         private void btnOFFVerde_Click(object sender, EventArgs e)
         {
-            port.Write("H");
+            flagLED = "green";
+           port.Write("H");
         }
 
         private void btnONYellow_Click(object sender, EventArgs e)
         {
+            flagLED = "yellow";
             port.Write("O");
         }
 
         private void btnOFFYellow_Click(object sender, EventArgs e)
         {
+            flagLED = "yellow";
             port.Write("P");
         }
     }
