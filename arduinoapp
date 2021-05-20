@@ -1,0 +1,49 @@
+#define intervalo 500
+#define POT A0
+#define ledVermelho 4
+#define ledAmarelo 3    
+#define ledVerde 2
+#define som 5 
+
+int leituraPOT=0;
+double valorVolt=0;
+
+  void setup() {
+  Serial.begin (9600);
+  pinMode(ledVermelho, OUTPUT);
+  pinMode(ledAmarelo, OUTPUT);
+  pinMode(ledVerde, OUTPUT);
+  }
+
+
+void loop(){
+String input="";
+while (Serial.available()){
+  char c = Serial.read();
+  input += c;
+  }
+if (input =="L"){
+  digitalWrite(ledVermelho, HIGH);
+  Serial.println(digitalRead(ledVermelho));
+}
+if (input =="D"){
+  digitalWrite(ledVermelho, LOW);
+  Serial.println(digitalRead(ledVermelho));
+}
+if (input =="G"){
+  digitalWrite(ledVerde, HIGH);
+  Serial.println(digitalRead(ledVerde));
+}
+if (input =="H"){
+  digitalWrite(ledVerde, LOW);
+  Serial.println(digitalRead(ledVerde));
+}
+if (input =="O"){
+  digitalWrite(ledAmarelo, HIGH);
+  Serial.println(digitalRead(ledAmarelo));
+}
+if (input =="P"){
+  digitalWrite(ledAmarelo, LOW);
+  Serial.println(digitalRead(ledAmarelo));
+}
+}
