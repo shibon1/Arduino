@@ -46,4 +46,11 @@ if (input =="P"){
   digitalWrite(ledAmarelo, LOW);
   Serial.println(digitalRead(ledAmarelo));
 }
+if (input == "I") {
+  int statusRed = digitalRead(ledVermelho);
+  int statusYellow = digitalRead(ledAmarelo);
+  int statusGreen = digitalRead(ledVerde);
+  String init = (String)statusRed + ";" + (String)statusYellow + ";" + (String)statusGreen;
+  Serial.println(init);
+}
 }
