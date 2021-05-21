@@ -11,8 +11,9 @@ namespace GRSIArduinoControl
         private string selectedCOM;
         private SerialPort port = new SerialPort();
         private int inData;
-        private String flagLED;
-
+        private string flagLED;
+        private string initData;
+        
 
         public Form1()
         {
@@ -121,7 +122,6 @@ namespace GRSIArduinoControl
             btnTerminar.Enabled = true;
             btnIniciar.Enabled = false;
             port.Write("I");
-
         }
 
         public void port_SerialDataReceivedEvent (object sender, SerialDataReceivedEventArgs e)
@@ -131,27 +131,97 @@ namespace GRSIArduinoControl
             {
                 try
                 {
-                    //converte para int o caracter que chega (0 ou 1)
-                    inData = Int16.Parse(port.ReadLine());
-                    this.Invoke(new EventHandler(displayData));
+                    initData = port.ReadLine();
+                    if (initData.Length == 6)
+                    {
+                        this.Invoke(new EventHandler(displayData2));
+                    }
+                    else if (initData.Length == 2)
+                    {
+                        //converte para int o caracter que chega (0 ou 1)
+                        inData = Int16.Parse(initData);
+                        this.Invoke(new EventHandler(displayData));
+                    }
+                    else
+                    {
+                        throw new FormException();
+                    }
                 }
                 catch (OperationCanceledException)
                 {
                     flag = true;
                 }
+                catch (FormatException)
+                {
+                    flag = true;
+                }
+                catch (FormException)
+                {
+                    if (!showException("Erro de leitura de dados! \n Tentar de novo?\n"))
+                    {
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        flag = true;
+                    }
+                }
             } while (flag == false);
             
         }
 
+        public void displayData2(object sender, EventArgs e)
+        {
+            
+            string[] splitedString = initData.Split(";");
+            int[] arr = new int[3];
+
+            for(int i=0; i<splitedString.Length;i++)
+            {
+                arr[i] = Convert.ToInt32(splitedString[i]);
+            }
+
+            if (arr[0] == 0)
+            {
+                tbLEDRed.BackColor = Color.Red;
+                tbLEDRed.Text = "DESLIGADO";
+            }
+            if (arr[0] == 1)
+            {
+                tbLEDRed.BackColor = Color.Green;
+                tbLEDRed.Text = "LIGADO";
+            }
+            if (arr[1] == 0)
+            {
+                tbLEDYellow.BackColor = Color.Red;
+                tbLEDYellow.Text = "DESLIGADO";
+            }
+            if (arr[1] == 1)
+            {
+                tbLEDYellow.BackColor = Color.Green;
+                tbLEDYellow.Text = "LIGADO";
+            }
+            if (arr[2] == 0)
+            {
+                tbLEDGreen.BackColor = Color.Red;
+                tbLEDGreen.Text = "DESLIGADO";
+            }
+            if (arr[2] == 1)
+            {
+                tbLEDGreen.BackColor = Color.Green;
+                tbLEDGreen.Text = "LIGADO";
+            }
+
+        }
         public void displayData(object sender, EventArgs e)
         {
-            tbLEDRed.Clear();
+            //tbLEDRed.Clear();
 
             if(inData == 0)
             {
-                switch(flagLED)
+                switch (flagLED)
                 {
-                    case "red" :
+                    case "red":
                         tbLEDRed.BackColor = Color.Red;
                         tbLEDRed.Text = "DESLIGADO";
                         break;
@@ -161,7 +231,7 @@ namespace GRSIArduinoControl
                         break;
                     case "green":
                         tbLEDGreen.BackColor = Color.Red;
-                        tbLEDGreen.Text = "LIGADO";
+                        tbLEDGreen.Text = "DESLIGADO";
                         break;
                 }
 
@@ -179,13 +249,15 @@ namespace GRSIArduinoControl
                         tbLEDYellow.Text = "LIGADO";
                         break;
                     case "green":
-                        tbLEDGreen.BackColor = Color.Red;
+                        tbLEDGreen.BackColor = Color.Green;
                         tbLEDGreen.Text = "LIGADO";
                         break;
                 }
-
+                
             }
-                    
+
+            flagLED = "";
+             
         }
 
         private void btnTerminar_Click(object sender, EventArgs e)
@@ -232,8 +304,19 @@ namespace GRSIArduinoControl
 
         private void btnONRed_Click(object sender, EventArgs e)
         {
-            flagLED = "red";
-            port.Write("L");
+            try
+            {
+                flagLED = "red";
+                port.Write("L");
+            }
+            catch (InvalidOperationException)
+            {
+                if(!showException("Ligação não estabelecida!\nTentar de novo?"))
+                {
+                    Application.Exit();
+                }
+
+            }
         }
 
         private void btnOFFRed_Click(object sender, EventArgs e)
@@ -242,43 +325,28 @@ namespace GRSIArduinoControl
             port.Write("D");
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnONVerde_Click(object sender, EventArgs e)
-        {
-            flagLED = "green"
-;           port.Write("G");
-        }
-
-        private void btnOFFVerde_Click(object sender, EventArgs e)
-        {
-            flagLED = "green";
-           port.Write("H");
-        }
-
         private void btnONYellow_Click(object sender, EventArgs e)
         {
             flagLED = "yellow";
-            port.Write("O");
+            port.Write("A");
         }
 
         private void btnOFFYellow_Click(object sender, EventArgs e)
         {
             flagLED = "yellow";
-            port.Write("P");
+            port.Write("B");
+        }
+
+        private void btnONGreen_Click(object sender, EventArgs e)
+        {
+            flagLED = "green";
+            port.Write("C");
+        }
+
+        private void btnOFFGreen_Click(object sender, EventArgs e)
+        {
+            flagLED = "green";
+            port.Write("E");
         }
     }
 

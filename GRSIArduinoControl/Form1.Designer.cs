@@ -39,14 +39,15 @@ namespace GRSIArduinoControl
             this.btnSair = new System.Windows.Forms.Button();
             this.btnONRed = new System.Windows.Forms.Button();
             this.btnOFFRed = new System.Windows.Forms.Button();
-            this.btnOFFGreen = new System.Windows.Forms.Button();
-            this.btnONGreen = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbLEDGreen = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbLEDYellow = new System.Windows.Forms.TextBox();
             this.btnOFFYellow = new System.Windows.Forms.Button();
             this.btnONYellow = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbLEDYellow = new System.Windows.Forms.TextBox();
+            this.btnOFFGreen = new System.Windows.Forms.Button();
+            this.btnONGreen = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbDados = new System.Windows.Forms.TextBox();
+            this.tbLEDGreen = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cbCOM
@@ -80,7 +81,6 @@ namespace GRSIArduinoControl
             // 
             // tbLEDRed
             // 
-            this.tbLEDRed.BackColor = System.Drawing.SystemColors.Window;
             this.tbLEDRed.ForeColor = System.Drawing.SystemColors.Window;
             this.tbLEDRed.Location = new System.Drawing.Point(61, 235);
             this.tbLEDRed.Name = "tbLEDRed";
@@ -118,7 +118,7 @@ namespace GRSIArduinoControl
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(84, 386);
+            this.btnSair.Location = new System.Drawing.Point(84, 433);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 7;
@@ -146,99 +146,103 @@ namespace GRSIArduinoControl
             this.btnOFFRed.UseVisualStyleBackColor = true;
             this.btnOFFRed.Click += new System.EventHandler(this.btnOFFRed_Click);
             // 
-            // btnOFFGreen
-            // 
-            this.btnOFFGreen.Location = new System.Drawing.Point(262, 342);
-            this.btnOFFGreen.Name = "btnOFFGreen";
-            this.btnOFFGreen.Size = new System.Drawing.Size(75, 23);
-            this.btnOFFGreen.TabIndex = 13;
-            this.btnOFFGreen.Text = "OFF";
-            this.btnOFFGreen.UseVisualStyleBackColor = true;
-            this.btnOFFGreen.Click += new System.EventHandler(this.btnOFFVerde_Click);
-            // 
-            // btnONGreen
-            // 
-            this.btnONGreen.Location = new System.Drawing.Point(170, 342);
-            this.btnONGreen.Name = "btnONGreen";
-            this.btnONGreen.Size = new System.Drawing.Size(75, 23);
-            this.btnONGreen.TabIndex = 12;
-            this.btnONGreen.Text = "ON";
-            this.btnONGreen.UseVisualStyleBackColor = true;
-            this.btnONGreen.Click += new System.EventHandler(this.btnONVerde_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 325);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 15);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "LED Verde";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // tbLEDGreen
-            // 
-            this.tbLEDGreen.BackColor = System.Drawing.SystemColors.Window;
-            this.tbLEDGreen.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbLEDGreen.Location = new System.Drawing.Point(61, 343);
-            this.tbLEDGreen.Name = "tbLEDGreen";
-            this.tbLEDGreen.Size = new System.Drawing.Size(80, 23);
-            this.tbLEDGreen.TabIndex = 10;
-            this.tbLEDGreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbLEDGreen.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 275);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 15);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "LED Amarelo";
-            // 
-            // tbLEDYellow
-            // 
-            this.tbLEDYellow.BackColor = System.Drawing.SystemColors.Window;
-            this.tbLEDYellow.ForeColor = System.Drawing.SystemColors.Window;
-            this.tbLEDYellow.Location = new System.Drawing.Point(61, 291);
-            this.tbLEDYellow.Name = "tbLEDYellow";
-            this.tbLEDYellow.Size = new System.Drawing.Size(80, 23);
-            this.tbLEDYellow.TabIndex = 14;
-            this.tbLEDYellow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnOFFYellow
             // 
-            this.btnOFFYellow.Location = new System.Drawing.Point(262, 291);
+            this.btnOFFYellow.Location = new System.Drawing.Point(262, 294);
             this.btnOFFYellow.Name = "btnOFFYellow";
             this.btnOFFYellow.Size = new System.Drawing.Size(75, 23);
-            this.btnOFFYellow.TabIndex = 17;
+            this.btnOFFYellow.TabIndex = 13;
             this.btnOFFYellow.Text = "OFF";
             this.btnOFFYellow.UseVisualStyleBackColor = true;
             this.btnOFFYellow.Click += new System.EventHandler(this.btnOFFYellow_Click);
             // 
             // btnONYellow
             // 
-            this.btnONYellow.Location = new System.Drawing.Point(170, 291);
+            this.btnONYellow.Location = new System.Drawing.Point(170, 294);
             this.btnONYellow.Name = "btnONYellow";
             this.btnONYellow.Size = new System.Drawing.Size(75, 23);
-            this.btnONYellow.TabIndex = 16;
+            this.btnONYellow.TabIndex = 12;
             this.btnONYellow.Text = "ON";
             this.btnONYellow.UseVisualStyleBackColor = true;
             this.btnONYellow.Click += new System.EventHandler(this.btnONYellow_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(61, 276);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 15);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "LED Amarelo";
+            // 
+            // tbLEDYellow
+            // 
+            this.tbLEDYellow.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbLEDYellow.Location = new System.Drawing.Point(61, 294);
+            this.tbLEDYellow.Name = "tbLEDYellow";
+            this.tbLEDYellow.Size = new System.Drawing.Size(80, 23);
+            this.tbLEDYellow.TabIndex = 10;
+            this.tbLEDYellow.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnOFFGreen
+            // 
+            this.btnOFFGreen.Location = new System.Drawing.Point(262, 351);
+            this.btnOFFGreen.Name = "btnOFFGreen";
+            this.btnOFFGreen.Size = new System.Drawing.Size(75, 23);
+            this.btnOFFGreen.TabIndex = 17;
+            this.btnOFFGreen.Text = "OFF";
+            this.btnOFFGreen.UseVisualStyleBackColor = true;
+            this.btnOFFGreen.Click += new System.EventHandler(this.btnOFFGreen_Click);
+            // 
+            // btnONGreen
+            // 
+            this.btnONGreen.Location = new System.Drawing.Point(170, 351);
+            this.btnONGreen.Name = "btnONGreen";
+            this.btnONGreen.Size = new System.Drawing.Size(75, 23);
+            this.btnONGreen.TabIndex = 16;
+            this.btnONGreen.Text = "ON";
+            this.btnONGreen.UseVisualStyleBackColor = true;
+            this.btnONGreen.Click += new System.EventHandler(this.btnONGreen_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(61, 333);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 15);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "LED Verde";
+            // 
+            // tbDados
+            // 
+            this.tbDados.Location = new System.Drawing.Point(288, 117);
+            this.tbDados.Name = "tbDados";
+            this.tbDados.Size = new System.Drawing.Size(100, 23);
+            this.tbDados.TabIndex = 18;
+            // 
+            // tbLEDGreen
+            // 
+            this.tbLEDGreen.ForeColor = System.Drawing.SystemColors.Window;
+            this.tbLEDGreen.Location = new System.Drawing.Point(59, 352);
+            this.tbLEDGreen.Name = "tbLEDGreen";
+            this.tbLEDGreen.Size = new System.Drawing.Size(82, 23);
+            this.tbLEDGreen.TabIndex = 19;
+            this.tbLEDGreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 450);
-            this.Controls.Add(this.btnOFFYellow);
-            this.Controls.Add(this.btnONYellow);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbLEDYellow);
+            this.ClientSize = new System.Drawing.Size(1010, 486);
+            this.Controls.Add(this.tbLEDGreen);
+            this.Controls.Add(this.tbDados);
             this.Controls.Add(this.btnOFFGreen);
             this.Controls.Add(this.btnONGreen);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnOFFYellow);
+            this.Controls.Add(this.btnONYellow);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbLEDGreen);
+            this.Controls.Add(this.tbLEDYellow);
             this.Controls.Add(this.btnOFFRed);
             this.Controls.Add(this.btnONRed);
             this.Controls.Add(this.btnSair);
@@ -251,7 +255,6 @@ namespace GRSIArduinoControl
             this.Controls.Add(this.cbCOM);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,14 +272,15 @@ namespace GRSIArduinoControl
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnONRed;
         private System.Windows.Forms.Button btnOFFRed;
-        private System.Windows.Forms.Button btnOFFGreen;
-        private System.Windows.Forms.Button btnONGreen;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbLEDGreen;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbLEDYellow;
         private System.Windows.Forms.Button btnOFFYellow;
         private System.Windows.Forms.Button btnONYellow;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbLEDYellow;
+        private System.Windows.Forms.Button btnOFFGreen;
+        private System.Windows.Forms.Button btnONGreen;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbDados;
+        private System.Windows.Forms.TextBox tbLEDGreen;
     }
 }
 
